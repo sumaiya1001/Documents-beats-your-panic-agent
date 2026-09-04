@@ -23,14 +23,14 @@ def fetch_btc_klines():
 
 def panicked_human_decision(pct_change):
     """Simulates an emotional human trader."""
-    if pct_change < 0:
-        return "SELL EVERYTHING", "Any red number triggers fear, sold in panic"
+    if pct_change <= -2.0:
+        return "SELL EVERYTHING", "Sharp drop triggered fear, sold in panic"
     else:
         return "HOLD", "No red, no reaction"
 
 def disciplined_agent_decision(pct_change):
     """Simulates a rational trading agent."""
-    if pct_change < -3.0:
+    if pct_change <= -2.99:
         return "REDUCE POSITION 25%", "Real panic zone, trim risk but don't fully exit"
     elif pct_change <= 0.0:
         return "HOLD", "Normal volatility, no action needed"
